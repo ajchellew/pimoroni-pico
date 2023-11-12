@@ -22,7 +22,7 @@ jobs:
 
     # Check out MicroPython
     - name: Checkout MicroPython
-      if: steps.cache.outputs.cache-hit != 'true'
+      #if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v4
       with:
         repository: ajchellew/micropython
