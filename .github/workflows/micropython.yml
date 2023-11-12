@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: ajchellew/micropython
-        ref: ${{env.MICROPYTHON_VERSION}}
+        ref: 1.21.0-BT_MOD # ${{env.MICROPYTHON_VERSION}}
         submodules: false  # MicroPython submodules are hideously broken
         path: micropython
 
