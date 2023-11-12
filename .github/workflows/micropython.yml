@@ -32,14 +32,14 @@ jobs:
 
     # Check out MicroPython Libs
     - name: Checkout MicroPython Libs
-      if: steps.cache.outputs.cache-hit != 'true'
+      #if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v3
       with:
         repository: micropython/micropython-lib
         path: micropython-lib
 
     - name: Fetch Pico submodules
-      if: steps.cache.outputs.cache-hit != 'true'
+      #if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
       working-directory: micropython/ports/rp2
       run: |
@@ -52,7 +52,7 @@ jobs:
         git submodule update --init ../../lib/btstack
 
     - name: Build mpy-cross
-      if: steps.cache.outputs.cache-hit != 'true'
+      #if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
       working-directory: micropython/mpy-cross
       run: make
