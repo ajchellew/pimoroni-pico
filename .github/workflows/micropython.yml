@@ -1,10 +1,6 @@
 name: MicroPython
 
-on:
-  push:
-  pull_request:
-  release:
-    types: [created]
+on: workflow_dispatch
 
 env:
   MICROPYTHON_VERSION: v1.21.0
