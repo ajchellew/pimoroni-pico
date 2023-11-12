@@ -3,7 +3,7 @@ name: MicroPython
 on: workflow_dispatch
 
 env:
-  MICROPYTHON_VERSION: v1.21.0
+  MICROPYTHON_VERSION: v1.21.0-BT_MOD
   WORKFLOW_VERSION: v1
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/checkout@v3
       with:
-        repository: micropython/micropython
+        repository: ajchellew/micropython
         ref: ${{env.MICROPYTHON_VERSION}}
         submodules: false  # MicroPython submodules are hideously broken
         path: micropython
@@ -64,30 +64,30 @@ jobs:
     strategy:
       matrix:
         include:
-        - name: pico
-          board: RPI_PICO
+        #- name: pico
+        #  board: RPI_PICO
         - name: picow
           board: RPI_PICO_W
-        - name: tiny2040
-          board: PIMORONI_TINY2040
-        - name: picolipo_4mb
-          board: PIMORONI_PICOLIPO_4MB
-        - name: picolipo_16mb
-          board: PIMORONI_PICOLIPO_16MB
-        - name: tufty2040
-          board: PIMORONI_TUFTY2040
-        - name: enviro
-          board: PICO_W_ENVIRO
-          patch: true
-        - name: galactic_unicorn
-          board: RPI_PICO_W
-        - name: cosmic_unicorn
-          board: RPI_PICO_W
-        - name: stellar_unicorn
-          board: RPI_PICO_W
-        - name: inky_frame
-          board: PICO_W_INKY
-          patch: true
+        #- name: tiny2040
+        #  board: PIMORONI_TINY2040
+        #- name: picolipo_4mb
+        #  board: PIMORONI_PICOLIPO_4MB
+        #- name: picolipo_16mb
+        #  board: PIMORONI_PICOLIPO_16MB
+        #- name: tufty2040
+        #  board: PIMORONI_TUFTY2040
+        #- name: enviro
+        #  board: PICO_W_ENVIRO
+        #  patch: true
+        #- name: galactic_unicorn
+        #  board: RPI_PICO_W
+        #- name: cosmic_unicorn
+        #  board: RPI_PICO_W
+        #- name: stellar_unicorn
+        #  board: RPI_PICO_W
+        #- name: inky_frame
+        #  board: PICO_W_INKY
+        #  patch: true
 
     env:
       # MicroPython version will be contained in github.event.release.tag_name for releases
