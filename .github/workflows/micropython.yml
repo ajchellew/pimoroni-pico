@@ -45,6 +45,13 @@ jobs:
         repository: micropython/micropython-lib
         path: micropython-lib
 
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
+
     - name: Fetch Pico submodules
       #if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
@@ -58,11 +65,25 @@ jobs:
         git submodule update --init ../../lib/tinyusb
         git submodule update --init ../../lib/btstack
 
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
+
     - name: Build mpy-cross
       #if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
       working-directory: micropython/mpy-cross
       run: make
+
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
 
   build:
     needs: deps
@@ -124,11 +145,25 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt update && sudo apt install ccache gcc-arm-none-eabi
+
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
   
     - uses: actions/checkout@v3
       with:
         submodules: true
         path: pimoroni-pico-${{ github.sha }}
+
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
 
     - name: Set MicroPython Version Env Vars
       shell: bash
