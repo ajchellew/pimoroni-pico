@@ -30,6 +30,13 @@ jobs:
         submodules: false  # MicroPython submodules are hideously broken
         path: micropython
 
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
+
     # Check out MicroPython Libs
     - name: Checkout MicroPython Libs
       #if: steps.cache.outputs.cache-hit != 'true'
