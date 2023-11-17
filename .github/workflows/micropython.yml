@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 env:
   MICROPYTHON_VERSION: v1.21.0
-  WORKFLOW_VERSION: v1
+  WORKFLOW_VERSION: v2
 
 jobs:
   deps:
