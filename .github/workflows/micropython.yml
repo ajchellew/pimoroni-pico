@@ -154,6 +154,13 @@ jobs:
       run: |
         cmake -S . -B build-${{matrix.name}} -DPICO_BUILD_DOCS=0 -DUSER_C_MODULES=${{env.USER_C_MODULES}} -DMICROPY_BOARD_DIR=${{env.MICROPY_BOARD_DIR}} -DMICROPY_BOARD=${{matrix.board}} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
+    - name: Debug what code we have
+      #if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      working-directory: micropython/extmod/btstack
+      run: |
+        cat modbluetooth_btstack.c
+
     - name: Build MicroPython  # Multiple simultaneous jobs trigger https://github.com/pimoroni/pimoroni-pico/issues/761
       shell: bash
       working-directory: micropython/ports/rp2
